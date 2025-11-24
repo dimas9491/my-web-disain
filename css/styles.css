@@ -1,0 +1,122 @@
+/**
+ * Vivid Visuals - Основные стили
+ * Содержит кастомные CSS стили для сайта дизайн-студии
+ */
+
+/* ============================================
+   БАЗОВЫЕ СТИЛИ
+   ============================================ */
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   КАСТОМНЫЙ СКРОЛЛБАР
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* ============================================
+   GLASSMORPHISM ЭФФЕКТ
+   Эффект матового стекла для карточек и элементов
+   ============================================ */
+
+.glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   ГРАДИЕНТНЫЙ ТЕКСТ
+   Применяется к заголовкам для создания эффекта
+   ============================================ */
+
+.text-gradient {
+    background: linear-gradient(to right, #8b5cf6, #ec4899, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ (REVEAL)
+   Элементы появляются при скролле страницы
+   ============================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для последовательного появления элементов */
+.reveal.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.reveal.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.reveal.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.reveal.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.reveal.delay-500 {
+    transition-delay: 0.5s;
+}
+
+/* ============================================
+   ЭФФЕКТЫ ПРИ НАВЕДЕНИИ НА КАРТОЧКИ УСЛУГ
+   ============================================ */
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.3);
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* ============================================
+   УТИЛИТЫ ДЛЯ ЗАДЕРЖКИ АНИМАЦИЙ
+   Используются для blob-эффектов на фоне
+   ============================================ */
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+
+

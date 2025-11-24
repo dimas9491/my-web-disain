@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivid Visuals | Дизайн для Продаж</title>
+
+    <!-- Внешние библиотеки -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Конфигурация Tailwind CSS -->
+    <script src="js/config.js"></script>
+
+    <!-- Кастомные стили -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="antialiased selection:bg-neon-purple selection:text-white">
+
+    <!-- ============================================
+         ФОНОВЫЕ ЭФФЕКТЫ
+         Плавающие цветные круги для атмосферы
+         ============================================ -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-purple rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-neon-cyan rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-neon-pink rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- ============================================
+         НАВИГАЦИОННАЯ ПАНЕЛЬ
+         ============================================ -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center glass rounded-2xl px-6 py-3 shadow-lg">
+                <!-- Логотип -->
+                <a href="#" class="text-2xl font-display font-bold tracking-tighter">
+                    VIVID<span class="text-neon-purple">.</span>
+                </a>
+
+                <!-- Десктопное меню -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                    <a href="#services" class="hover:text-white transition">Услуги</a>
+                    <a href="#portfolio" class="hover:text-white transition">Портфолио</a>
+                    <a href="#calculator" class="hover:text-white transition">Цены</a>
+                    <a href="#process" class="hover:text-white transition">Процесс</a>
+                </div>
+
+                <!-- Кнопка заказа (десктоп) -->
+                <button onclick="openModal()" class="hidden md:block bg-gradient-to-r from-neon-purple to-neon-pink hover:opacity-90 text-white px-6 py-2 rounded-full font-bold text-sm transition transform hover:scale-105 shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                    Заказать Дизайн
+                </button>
+
+                <!-- Кнопка мобильного меню -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-dark-bg/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex-col space-y-4 shadow-2xl">
+            <a href="#services" class="block text-lg font-medium text-white">Услуги</a>
+            <a href="#portfolio" class="block text-lg font-medium text-white">Портфолио</a>
+            <a href="#calculator" class="block text-lg font-medium text-white">Цены</a>
+            <button onclick="openModal()" class="w-full bg-neon-purple text-white py-3 rounded-xl font-bold">Связаться</button>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         ГЛАВНЫЙ ЭКРАН (HERO SECTION)
+         ============================================ -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6 text-center z-10">
+            <!-- Бейдж -->
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 text-neon-cyan text-xs font-bold tracking-widest uppercase reveal">
+                Design Studio 2024
+            </div>
+
+            <!-- Главный заголовок -->
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6 reveal delay-100">
+                Визуал, который <br>
+                <span class="text-gradient animate-pulse">ПРОДАЕТ</span>
+            </h1>
+
+            <!-- Описание -->
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 reveal delay-200">
+                Мы создаем сочные превью для YouTube, карточки товаров для WB/Ozon и креативы, которые заставляют кликнуть. Повысьте свой CTR уже сегодня.
+            </p>
+
+            <!-- Кнопки действий -->
+            <div class="flex flex-col md:flex-row justify-center gap-4 reveal delay-300">
+                <a href="#portfolio" class="px-8 py-4 rounded-full bg-white text-dark-bg font-bold hover:bg-gray-200 transition">
+                    Смотреть работы
+                </a>
+                <a href="#calculator" class="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 transition backdrop-blur-sm">
+                    Рассчитать стоимость
+                </a>
+            </div>
+
+            <!-- Плавающие карточки-превью -->
+            <div class="mt-16 relative w-full max-w-4xl mx-auto h-64 md:h-80 reveal delay-500 animate-float">
+                <!-- Центральная карточка -->
+                <div class="absolute left-1/2 top-0 -translate-x-1/2 w-64 h-40 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-white/10 shadow-2xl z-10 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fab fa-youtube text-red-500 text-4xl mb-2"></i>
+                        <p class="font-bold">YouTube Preview</p>
+                        <p class="text-xs text-green-400">+145% CTR</p>
+                    </div>
+                </div>
+
+                <!-- Левая карточка -->
+                <div class="absolute left-1/2 top-10 -translate-x-[120%] w-56 h-36 glass rounded-xl flex items-center justify-center rotate-[-12deg] z-0">
+                    <div class="text-center">
+                        <span class="text-neon-pink font-bold text-xl">WILDBERRIES</span>
+                        <p class="text-xs text-gray-300">Инфографика</p>
+                    </div>
+                </div>
+
+                <!-- Правая карточка -->
+                <div class="absolute left-1/2 top-10 translate-x-[20%] w-56 h-36 glass rounded-xl flex items-center justify-center rotate-[12deg] z-0">
+                    <div class="text-center">
+                        <i class="fab fa-instagram text-neon-purple text-3xl mb-1"></i>
+                        <p class="font-bold">Social Pack</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         БЕГУЩАЯ СТРОКА
+         ============================================ -->
+    <div class="w-full bg-neon-purple/10 border-y border-neon-purple/20 overflow-hidden py-4">
+        <div class="whitespace-nowrap animate-marquee flex gap-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 font-display font-black text-4xl uppercase opacity-50">
+            <span>Clickbait Thumbnails</span> • <span>Marketplace Cards</span> • <span>Social Media Design</span> • <span>Branding</span> • <span>Web Banners</span> •
+            <span>Clickbait Thumbnails</span> • <span>Marketplace Cards</span> • <span>Social Media Design</span> • <span>Branding</span> • <span>Web Banners</span> •
+        </div>
+    </div>
+
+    <!-- ============================================
+         СЕКЦИЯ УСЛУГ
+         ============================================ -->
+    <section id="services" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <!-- Заголовок секции -->
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Наши <span class="text-neon-cyan">Услуги</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Полный спектр графического дизайна для вашего бизнеса в интернете.</p>
+            </div>
+
+            <!-- Карточки услуг -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Услуга 1: YouTube Превью -->
+                <div class="service-card glass p-8 rounded-2xl border border-white/5 transition duration-300 cursor-pointer group reveal delay-100">
+                    <div class="w-14 h-14 bg-red-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fab fa-youtube text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">YouTube Превью</h3>
+                    <p class="text-sm text-gray-400">Кликабельные обложки, которые повышают просмотры. Анализ конкурентов и яркие эмоции.</p>
+                </div>
+
+                <!-- Услуга 2: Маркетплейсы -->
+                <div class="service-card glass p-8 rounded-2xl border border-white/5 transition duration-300 cursor-pointer group reveal delay-200">
+                    <div class="w-14 h-14 bg-neon-pink/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-shopping-bag text-neon-pink text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Маркетплейсы</h3>
+                    <p class="text-sm text-gray-400">Инфографика для Wildberries и Ozon. Выделяем преимущества, закрываем боли покупателя.</p>
+                </div>
+
+                <!-- Услуга 3: SMM Упаковка -->
+                <div class="service-card glass p-8 rounded-2xl border border-white/5 transition duration-300 cursor-pointer group reveal delay-300">
+                    <div class="w-14 h-14 bg-neon-purple/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-layer-group text-neon-purple text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">SMM Упаковка</h3>
+                    <p class="text-sm text-gray-400">Единый стиль для постов и сторис. Шаблоны, хайлайтс и оформление профиля.</p>
+                </div>
+
+                <!-- Услуга 4: Креативы & Реклама -->
+                <div class="service-card glass p-8 rounded-2xl border border-white/5 transition duration-300 cursor-pointer group reveal delay-400">
+                    <div class="w-14 h-14 bg-neon-blue/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i class="fas fa-magic text-neon-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Креативы & Реклама</h3>
+                    <p class="text-sm text-gray-400">Баннеры для таргета и контекста. Высокая конверсия за счет правильных акцентов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         КАЛЬКУЛЯТОР СТОИМОСТИ
+         ============================================ -->
+    <section id="calculator" class="py-24 bg-dark-bg relative overflow-hidden">
+        <!-- Декоративный элемент -->
+        <div class="absolute right-0 top-20 w-1/2 h-full bg-gradient-to-l from-neon-purple/5 to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- Левая часть: Описание -->
+                <div class="lg:w-1/2 reveal">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Рассчитай <br>свой <span class="text-gradient">проект</span></h2>
+                    <p class="text-gray-400 mb-8 text-lg">Выберите необходимые услуги, чтобы получить предварительную оценку стоимости и сроки выполнения.</p>
+
+                    <!-- Преимущества -->
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Правки включены в стоимость (до 3 кругов)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Исходники в PSD/Figma бесплатно</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Скидка 15% при заказе от 5 штук</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Правая часть: Форма калькулятора -->
+                <div class="lg:w-1/2 w-full reveal delay-200">
+                    <div class="glass p-8 rounded-3xl border border-white/10 shadow-2xl">
+                        <div class="space-y-6">
+                            <!-- Выбор типа услуги -->
+                            <div>
+                                <label class="block text-sm font-bold text-gray-400 mb-2">Тип услуги</label>
+                                <select id="service-select" class="w-full bg-dark-bg border border-gray-700 rounded-xl px-4 py-3 text-white focus:border-neon-purple focus:outline-none focus:ring-1 focus:ring-neon-purple transition">
+                                    <option value="1500" data-time="1 день">YouTube Превью (1 шт)</option>
+                                    <option value="1000" data-time="1-2 дня">Карточка товара WB (1 слайд)</option>
+                                    <option value="800" data-time="1 день">Пост для Instagram/TG</option>
+                                    <option value="2500" data-time="2-3 дня">Рекламный баннер</option>
+                                </select>
+                            </div>
+
+                            <!-- Выбор количества -->
+                            <div>
+                                <label class="block text-sm font-bold text-gray-400 mb-2">Количество</label>
+                                <input type="range" id="quantity-range" min="1" max="20" value="1" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-neon-purple">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>1 шт.</span>
+                                    <span id="quantity-display" class="text-white font-bold">1 шт.</span>
+                                    <span>20 шт.</span>
+                                </div>
+                            </div>
+
+                            <!-- Чекбокс срочности -->
+                            <div class="flex items-center justify-between p-4 bg-dark-bg/50 rounded-xl border border-gray-700">
+                                <span class="text-sm font-medium">Нужно срочно (x1.5)</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="urgency-check" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-pink"></div>
+                                </label>
+                            </div>
+
+                            <!-- Итоговая стоимость и срок -->
+                            <div class="pt-6 border-t border-gray-700 flex justify-between items-end">
+                                <div>
+                                    <p class="text-sm text-gray-400">Примерная стоимость:</p>
+                                    <p id="total-price" class="text-4xl font-display font-bold text-white">1 500 ₽</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm text-gray-400">Срок:</p>
+                                    <p id="time-estimate" class="text-lg font-bold text-neon-cyan">1 день</p>
+                                </div>
+                            </div>
+
+                            <!-- Кнопка заказа -->
+                            <button onclick="openModal()" class="w-full bg-white text-dark-bg font-bold py-4 rounded-xl hover:bg-gray-200 transition transform hover:scale-[1.02]">
+                                Заказать этот пакет
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ПОРТФОЛИО
+         ============================================ -->
+    <section id="portfolio" class="py-24">
+        <div class="container mx-auto px-6">
+            <!-- Заголовок секции -->
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <h2 class="text-3xl md:text-5xl font-display font-bold reveal">Свежие <span class="text-neon-pink">Работы</span></h2>
+                <a href="#" class="text-gray-400 hover:text-white transition mt-4 md:mt-0 underline decoration-neon-purple underline-offset-8 reveal">Смотреть все работы на Behance</a>
+            </div>
+
+            <!-- Сетка проектов -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Проект 1: Игровой Стрим -->
+                <div class="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer reveal delay-100">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-black group-hover:scale-110 transition duration-700"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-500">
+                            <h1 class="text-4xl font-black text-white italic drop-shadow-lg">GAMING</h1>
+                            <span class="bg-red-600 text-white text-xs px-2 py-1 rounded uppercase font-bold">Live</span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center backdrop-blur-sm">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                            <h4 class="text-xl font-bold">Игровой Стрим</h4>
+                            <p class="text-neon-cyan text-sm">YouTube Preview</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 2: Наушники Pro -->
+                <div class="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer reveal delay-200">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-800 to-gray-900 group-hover:scale-110 transition duration-700"></div>
+                    <div class="absolute inset-0 flex items-center justify-center px-8">
+                        <div class="bg-white/10 backdrop-blur w-full h-32 rounded flex items-center gap-4 px-4 border border-white/20">
+                            <div class="w-20 h-20 bg-gray-300 rounded"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="h-4 bg-white rounded w-3/4"></div>
+                                <div class="h-4 bg-white/50 rounded w-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center backdrop-blur-sm">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                            <h4 class="text-xl font-bold">Наушники Pro</h4>
+                            <p class="text-neon-pink text-sm">Карточка Ozon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 3: Черная Пятница -->
+                <div class="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer reveal delay-300">
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-900 group-hover:scale-110 transition duration-700"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-red-500 drop-shadow-sm">SALE</span>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center backdrop-blur-sm">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                            <h4 class="text-xl font-bold">Черная Пятница</h4>
+                            <p class="text-neon-purple text-sm">Instagram Stories</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 4: Инвестиции -->
+                <div class="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer reveal delay-100 md:col-span-2 lg:col-span-1">
+                    <div class="absolute inset-0 bg-gradient-to-bl from-green-800 to-black group-hover:scale-110 transition duration-700"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center border-4 border-green-500 m-4">
+                        <span class="text-green-500 font-mono text-xl">FINANCE_GROWTH</span>
+                        <i class="fas fa-chart-line text-4xl text-white mt-2"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center backdrop-blur-sm">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                            <h4 class="text-xl font-bold">Инвестиции</h4>
+                            <p class="text-neon-cyan text-sm">Рекламный Баннер</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Проект 5: Личный Бренд -->
+                <div class="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer reveal delay-200 lg:col-span-2">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center group-hover:scale-110 transition duration-700 opacity-60"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h2 class="text-5xl font-display font-bold tracking-widest text-white border-b-4 border-white">LIFESTYLE</h2>
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center backdrop-blur-sm">
+                        <div class="text-center transform translate-y-4 group-hover:translate-y-0 transition duration-300">
+                            <h4 class="text-xl font-bold">Личный Бренд</h4>
+                            <p class="text-neon-pink text-sm">Полная упаковка</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ПРОЦЕСС РАБОТЫ
+         ============================================ -->
+    <section id="process" class="py-24 bg-black/30">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-display font-bold text-center mb-16 reveal">Как мы <span class="text-neon-purple">работаем</span></h2>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Вертикальная линия -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-neon-purple to-neon-pink opacity-30 hidden md:block"></div>
+
+                <!-- Шаг 1: Бриф и Задача -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-16 relative z-10 reveal">
+                    <div class="md:w-5/12 text-center md:text-right order-2 md:order-1">
+                        <h3 class="text-2xl font-bold text-white mb-2">Бриф и Задача</h3>
+                        <p class="text-gray-400">Вы заполняете короткую анкету или скидываете ТЗ. Мы обсуждаем референсы и стиль.</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-neon-purple border-4 border-dark-bg flex items-center justify-center text-white font-bold order-1 md:order-2 mb-4 md:mb-0 shadow-[0_0_20px_rgba(139,92,246,0.5)]">1</div>
+                    <div class="md:w-5/12 order-3"></div>
+                </div>
+
+                <!-- Шаг 2: Прототип и Дизайн -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-16 relative z-10 reveal delay-100">
+                    <div class="md:w-5/12 order-3 md:order-1"></div>
+                    <div class="w-12 h-12 rounded-full bg-neon-pink border-4 border-dark-bg flex items-center justify-center text-white font-bold order-1 md:order-2 mb-4 md:mb-0 shadow-[0_0_20px_rgba(236,72,153,0.5)]">2</div>
+                    <div class="md:w-5/12 text-center md:text-left order-2 md:order-3">
+                        <h3 class="text-2xl font-bold text-white mb-2">Прототип и Дизайн</h3>
+                        <p class="text-gray-400">Мы создаем первый вариант дизайна. Показываем вам, собираем обратную связь.</p>
+                    </div>
+                </div>
+
+                <!-- Шаг 3: Правки и Финал -->
+                <div class="flex flex-col md:flex-row justify-between items-center relative z-10 reveal delay-200">
+                    <div class="md:w-5/12 text-center md:text-right order-2 md:order-1">
+                        <h3 class="text-2xl font-bold text-white mb-2">Правки и Финал</h3>
+                        <p class="text-gray-400">Вносим корректировки (если нужно) и отдаем вам файлы в высоком качестве (PNG/JPG + PSD).</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-neon-blue border-4 border-dark-bg flex items-center justify-center text-white font-bold order-1 md:order-2 mb-4 md:mb-0 shadow-[0_0_20px_rgba(59,130,246,0.5)]">3</div>
+                    <div class="md:w-5/12 order-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ПРИЗЫВ К ДЕЙСТВИЮ (CTA)
+         ============================================ -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-neon-purple/20 to-neon-blue/20"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-display font-bold mb-8 reveal">Готовы поднять <br>уровень визуала?</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto reveal delay-100">Не теряйте клиентов из-за плохого дизайна. Закажите упаковку, которая окупится.</p>
+            <button onclick="openModal()" class="px-10 py-5 bg-white text-dark-bg font-bold text-lg rounded-full hover:bg-gray-100 transition shadow-[0_0_30px_rgba(255,255,255,0.3)] transform hover:-translate-y-1 reveal delay-200">
+                Начать проект
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ФУТЕР
+         ============================================ -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- О компании -->
+                <div class="md:col-span-2">
+                    <a href="#" class="text-2xl font-display font-bold tracking-tighter mb-4 block">
+                        VIVID<span class="text-neon-purple">.</span>
+                    </a>
+                    <p class="text-gray-500 max-w-xs">Создаем дизайн, который помогает бизнесу зарабатывать больше. Качество, скорость, результат.</p>
+                </div>
+
+                <!-- Навигация -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Навигация</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#services" class="hover:text-neon-purple">Услуги</a></li>
+                        <li><a href="#portfolio" class="hover:text-neon-purple">Портфолио</a></li>
+                        <li><a href="#calculator" class="hover:text-neon-purple">Стоимость</a></li>
+                    </ul>
+                </div>
+
+                <!-- Контакты -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Telegram: @vivid_visuals</li>
+                        <li>Email: hello@vivid.art</li>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center hover:bg-neon-purple transition text-white"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="#" class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center hover:bg-neon-pink transition text-white"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-8 h-8 rounded bg-gray-800 flex items-center justify-center hover:bg-neon-blue transition text-white"><i class="fab fa-behance"></i></a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Копирайт -->
+            <div class="text-center text-gray-600 text-sm pt-8 border-t border-white/5">
+                &copy; 2024 Vivid Visuals. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         МОДАЛЬНОЕ ОКНО ЗАКАЗА
+         ============================================ -->
+    <div id="order-modal" class="fixed inset-0 z-[100] hidden">
+        <!-- Затемнение фона -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+
+        <!-- Модальное окно -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6">
+            <div class="bg-gray-900 border border-white/10 rounded-2xl p-8 shadow-2xl relative">
+                <!-- Кнопка закрытия -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+
+                <!-- Заголовок -->
+                <h3 class="text-2xl font-bold mb-2 text-center">Обсудить проект</h3>
+                <p class="text-gray-400 text-center mb-6 text-sm">Оставьте контакты, мы напишем вам в течение 15 минут.</p>
+
+                <!-- Форма -->
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.'); closeModal();">
+                    <div>
+                        <input type="text" placeholder="Ваше имя" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 focus:border-neon-purple focus:outline-none text-white">
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Telegram / WhatsApp" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 focus:border-neon-purple focus:outline-none text-white">
+                    </div>
+                    <div>
+                        <textarea placeholder="Что нужно сделать?" rows="3" class="w-full bg-dark-bg border border-gray-700 rounded-lg px-4 py-3 focus:border-neon-purple focus:outline-none text-white"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold py-3 rounded-lg hover:opacity-90 transition shadow-lg">
+                        Отправить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         ПОДКЛЮЧЕНИЕ JAVASCRIPT МОДУЛЕЙ
+         ============================================ -->
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/modal.js"></script>
+
+</body>
+</html>
